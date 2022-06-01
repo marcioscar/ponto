@@ -136,12 +136,12 @@ export default function Home() {
 
   return (
     <>
-      <nav className="bg-slate-200">
+      <nav className="bg-slate-200 ">
         <div className="max-w-7xl mx-auto p-2 sm:px-6 lg:px-8 flex items-center justify-between">
-          <img className="w-40 lg:w-56" src="logosvg.svg" alt="logo" />
-          <label className="mr-2 font-medium"></label>
+          <img className="w-32 lg:w-56" src="logosvg.svg" alt="logo" />
+          <label className="mr-2  md:font-medium"></label>
           <select
-            className="rounded text-blue-600 h-8 print:text-black print:w-32 w-40 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
+            className="rounded text-xs md:text-xl text-blue-600 h-8  w-20 md:w-40 print:text-black print:w-32 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
             value={mes}
             onChange={(e) => SetMes(e.target.value)}
           >
@@ -161,9 +161,9 @@ export default function Home() {
             <option value="11">Novembro</option>
             <option value="12">Dezembro</option>
           </select>
-          <label className="ml-2 mr-2 font-medium"></label>
+          <label className="ml-2 mr-2 md:font-medium"></label>
           <select
-            className="rounded print:text-black text-blue-600 h-8 print:w-32 w-40 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
+            className="rounded text-xs md:text-xl print:text-black text-blue-600 h-8 print:w-32 w-24 md:w-40 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
             value={ano}
             onChange={(e) => SetAno(e.target.value)}
           >
@@ -178,8 +178,9 @@ export default function Home() {
           </select>
           <div className="flex items-center gap-5 p-4 ">
             {user && (
-              <div className="font-bold text-xl">
-                {user?.firstName + " " + user?.lastName}
+              <div className="md:font-bold md:flex  md:text-xl">
+                <div>{user?.firstName}</div>
+                <div>{user?.lastName}</div>
               </div>
             )}
             <div className="text-center">
