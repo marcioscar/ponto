@@ -109,7 +109,7 @@ export default function Home() {
                   className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700"
                 >
                   <td>
-                    <div className=" text-left whitespace-nowrap">
+                    <div className=" text-left  text-lg whitespace-nowrap">
                       {user.firstName} {user.lastName}
                     </div>
                   </td>
@@ -120,16 +120,16 @@ export default function Home() {
                   </td> */}
 
                   <td>
-                    <div className="text-center items-center whitespace-nowrap">
+                    <div className="text-center items-center  whitespace-nowrap">
                       <Link
                         to={user.id}
-                        className=" text-white bg-[#1da1f2] hover:bg-[#1da1f2]/80 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 m-2"
+                        className=" text-white bg-slate-400/75 hover:bg-[#1da1f2]/80 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 m-2"
                       >
                         <svg
                           className="mr-2 text-white"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
+                          width="14"
+                          height="14"
                           viewBox="0 0 24 24"
                         >
                           <path

@@ -26,8 +26,13 @@ export function hour(date: Date): string {
   };
   return new Intl.DateTimeFormat("pt-br", config).format(new Date(date));
 }
-const now = new Date();
+
 export function diffData(i, ol, il, o) {
+  if (!ol && !il) {
+    ol = o;
+    il = o;
+  }
+
   var ms = moment(ol, "YYYY/MM/DD HH:mm:ss").diff(
     moment(i, "YYYY/MM/DD HH:mm:ss")
   );
