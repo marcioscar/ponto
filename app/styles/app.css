@@ -608,6 +608,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 24rem;
 }
 
+.w-28 {
+  width: 7rem;
+}
+
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -634,12 +638,20 @@ Ensure the default browser behavior of the `hidden` attribute.
           appearance: none;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
 .flex-col {
   flex-direction: column;
 }
 
 .items-center {
   align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
 }
 
 .justify-center {
@@ -1047,8 +1059,29 @@ Ensure the default browser behavior of the `hidden` attribute.
     width: 10rem;
   }
 
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .md\:p-4 {
+    padding: 1rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
   .md\:font-medium {
     font-weight: 500;
+  }
+
+  .md\:font-bold {
+    font-weight: 700;
   }
 }
 

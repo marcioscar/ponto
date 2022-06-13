@@ -79,10 +79,10 @@ export default function Employee() {
     <>
       <nav className="bg-slate-200">
         <div className="max-w-7xl mx-auto p-2 sm:px-6 lg:px-8 flex items-center justify-between">
-          <img className="w-40 lg:w-56" src="../logosvg.svg" alt="logo" />
-          <label className="mr-2 font-medium"></label>
+          <img className="w-32 lg:w-56" src="../logosvg.svg" alt="logo" />
+          <label className="mr-2  md:font-medium"></label>
           <select
-            className="rounded text-blue-600 h-8 print:text-black print:w-32 w-40 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
+            className="rounded  md:block  text-blue-600 h-8 w-28 md:w-40 print:text-black print:w-32 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
             value={mes}
             onChange={(e) => SetMes(e.target.value)}
           >
@@ -104,7 +104,7 @@ export default function Employee() {
           </select>
           <label className="ml-2 mr-2 font-medium"></label>
           <select
-            className="rounded print:text-black text-blue-600 h-8 print:w-32 w-40 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
+            className="rounded hidden md:block  print:text-black text-blue-600 h-8 print:w-32 w-24 md:w-40 pl-5 pr-10 hover:border-gray-400 focus:outline-none appearance-none"
             value={ano}
             onChange={(e) => SetAno(e.target.value)}
           >
@@ -117,9 +117,9 @@ export default function Employee() {
             <option value="2024">2024</option>
             <option value="2025">2025</option>
           </select>
-          <div className="flex items-center gap-5 p-4 ">
+          <div className="flex flex-col md:flex-row  items-center gap-4 md:p-4">
             {user && (
-              <div className="font-bold text-xl">
+              <div className="font-bold md:text-xl">
                 {user?.firstName + " " + user?.lastName}
               </div>
             )}
