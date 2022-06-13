@@ -98,7 +98,7 @@ export default function Home() {
             <thead>
               <tr className=" text-gray-500  text-sm leading-normal bg-gray-100 border-b dark:bg-gray-800 dark:border-gray-700">
                 <th className="py-2 text-left ">Nome</th>
-                <th className=" py-2 ">Id</th>
+                {/* <th className=" py-2 ">Id</th> */}
                 <th className="py-2 ">Ações</th>
               </tr>
             </thead>
@@ -113,11 +113,11 @@ export default function Home() {
                       {user.firstName} {user.lastName}
                     </div>
                   </td>
-                  <td className="">
+                  {/* <td className="">
                     <div className=" p-2 text-center whitespace-nowrap">
                       {user.id}
                     </div>
-                  </td>
+                  </td> */}
 
                   <td>
                     <div className="text-center items-center whitespace-nowrap">
