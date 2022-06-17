@@ -13,6 +13,7 @@ export const loader: LoaderFunction = async ({ request, params }) => {
   console.log("user parametros:" + user);
   return json({ user });
 };
+
 export function hour(date: Date): string {
   const config = {
     //weekday: "short",
