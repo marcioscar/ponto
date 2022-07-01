@@ -2,8 +2,7 @@
 import bcrypt from "bcryptjs";
 import type { RegisterForm } from "./types.server";
 import { prisma } from "./prisma.server";
-// import { hit } from "~/utils/user.server";
-import { action } from "../routes/logout";
+import { redirect } from "@remix-run/node";
 
 export const createUser = async (user: RegisterForm) => {
   const passwordHash = await bcrypt.hash(user.password, 10);
@@ -16,6 +15,45 @@ export const createUser = async (user: RegisterForm) => {
     },
   });
   return { id: newUser.id, email: user.email };
+};
+
+export const updateUser = async (user: RegisterForm) => {
+  if (user.password) {
+    const passwordHash = await bcrypt.hash(user.password, 10);
+    await prisma.user.update({
+      where: {
+        id: user.userId,
+      },
+      data: {
+        email: user.email,
+        password: passwordHash,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+    });
+    throw redirect("/admin");
+  } else {
+    await prisma.user.update({
+      where: {
+        id: user.userId,
+      },
+      data: {
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+    });
+
+    throw redirect("/admin");
+  }
+};
+export const deleteUser = async (user: RegisterForm) => {
+  await prisma.user.delete({
+    where: {
+      id: user.userId,
+    },
+  });
+  throw redirect("/admin");
 };
 
 export const getOtherUsers = async (userId: string) => {
@@ -59,7 +97,10 @@ export const hitTimesheet = async (userId, action) => {
         data: {
           timeSheet: {
             push: {
-              day: new Date().getDate().toString(),
+              day:
+                new Date().getDate().toString().padStart(2, "0") +
+                "-" +
+                (new Date().getMonth() + 1).toString().padStart(2, "0"),
               in: new Date(),
               outLunch: null,
               inLunch: null,
@@ -79,7 +120,10 @@ export const hitTimesheet = async (userId, action) => {
           timeSheet: {
             updateMany: {
               where: {
-                day: new Date().getDate().toString(),
+                day:
+                  new Date().getDate().toString().padStart(2, "0") +
+                  "-" +
+                  (new Date().getMonth() + 1).toString().padStart(2, "0"),
               },
               data: {
                 outLunch: new Date(),
@@ -98,7 +142,10 @@ export const hitTimesheet = async (userId, action) => {
           timeSheet: {
             updateMany: {
               where: {
-                day: new Date().getDate().toString(),
+                day:
+                  new Date().getDate().toString().padStart(2, "0") +
+                  "-" +
+                  (new Date().getMonth() + 1).toString().padStart(2, "0"),
               },
               data: {
                 inLunch: new Date(),
@@ -117,7 +164,10 @@ export const hitTimesheet = async (userId, action) => {
           timeSheet: {
             updateMany: {
               where: {
-                day: new Date().getDate().toString(),
+                day:
+                  new Date().getDate().toString().padStart(2, "0") +
+                  "-" +
+                  (new Date().getMonth() + 1).toString().padStart(2, "0"),
               },
               data: {
                 out: new Date(),
