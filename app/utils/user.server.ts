@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import type { RegisterForm } from "./types.server";
 import { prisma } from "./prisma.server";
 import { redirect } from "@remix-run/node";
+import _ from "lodash";
 
 export const createUser = async (user: RegisterForm) => {
   const passwordHash = await bcrypt.hash(user.password, 10);
@@ -75,12 +76,40 @@ export const getUser = async (userId: string) => {
   });
 };
 
-export const getHit = async (userId: string, data: Date) => {
-  return prisma.user.findUnique({
+export const getHit = async (userId: string, ponto: string) => {
+  const hit = await prisma.user.aggregateRaw({
+    pipeline: [{ $unwind: "$timeSheet" }],
+  });
+  console.log(userId);
+  // const hitFilter = _.filter(hit, ["firstName", userId]);
+
+  const res = _.filter(hit, ({ email, timeSheet }) =>
+    _.every([_.includes([userId], email), _.includes([ponto], timeSheet.day)])
+  );
+
+  // console.log(res);
+  return res;
+};
+
+export const updateHit = async (values: any) => {
+  console.log(values);
+  return prisma.user.update({
     where: {
-      id: userId,
+      email: values.email,
+    },
+    data: {
       timeSheet: {
-        day: data,
+        updateMany: {
+          where: {
+            day: values.day,
+          },
+          data: {
+            in: new Date(values.entrada),
+            outLunch: new Date(values.saidaAlmoco),
+            inLunch: new Date(values.entradaAlmoco),
+            out: new Date(values.saida),
+          },
+        },
       },
     },
   });

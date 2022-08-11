@@ -63,7 +63,7 @@ export default function User() {
                 type="text"
                 name="userId"
                 required
-                defaultValue={user?.id}
+                value={user?.id}
               />
               <label htmlFor="firstName" className="text-blue-600 ">
                 Nome

@@ -6,11 +6,12 @@ import { getUser } from "~/utils/user.server";
 import { useState } from "react";
 import { requireUserId } from "~/utils/auth.server";
 import moment from "moment";
+import { Link } from "@remix-run/react";
 
 export const loader: LoaderFunction = async ({ request, params }) => {
   await requireUserId(request);
   const user = await getUser(params.employee as string);
-  console.log("user parametros:" + user);
+  
   return json({ user });
 };
 
@@ -158,6 +159,7 @@ export default function Employee() {
               <th className="text-center">Entrada Almoço</th>
               <th className=" text-center">Saída</th>
               <th className=" text-center">Total</th>
+              <th className=" text-center"></th>
             </tr>
           </thead>
           <tbody className="text-gray-600 text-sm ">
@@ -195,6 +197,16 @@ export default function Employee() {
                 </td>
                 <td>
                   <div className=" text-center whitespace-nowrap">{days.h}</div>
+                </td>
+                <td>
+                  <div className="text-center items-center  whitespace-nowrap">
+                    <Link
+                      to={`/admin/ponto/${user.email}/${days.day}`}
+                      className=" text-white bg-green-400/75 hover:bg-[#1da1f2]/80 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-2 py-2 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 m-2"
+                    >
+                      Editar
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}
