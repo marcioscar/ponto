@@ -5,7 +5,7 @@ import { prisma } from "./prisma.server";
 import { redirect } from "@remix-run/node";
 import _ from "lodash";
 import moment from "moment";
-import 'moment-timezone';
+import "moment-timezone";
 
 export const createUser = async (user: RegisterForm) => {
   const passwordHash = await bcrypt.hash(user.password, 10);
@@ -97,8 +97,8 @@ export const updateHit = async (values: any) => {
   console.log(new Date(values.entrada));
   // let d = moment.tz("America/Sao_Paulo");
   // console.log(d.format(values.entrada)); //2019-10-18T10:32:31-03:00
-  var a = (moment.utc(values.entrada).tz("America/Sao_Paulo").format());
-  console.log(a)
+  var a = moment.utc(values.entrada).tz("Europe/Istanbul").format();
+  console.log(a);
   return prisma.user.update({
     where: {
       email: values.email,
