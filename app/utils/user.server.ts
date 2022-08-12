@@ -92,7 +92,7 @@ export const getHit = async (userId: string, ponto: string) => {
 };
 
 export const updateHit = async (values: any) => {
-  console.log(values);
+  // console.log(new Date(values.entrada));
   return prisma.user.update({
     where: {
       email: values.email,
