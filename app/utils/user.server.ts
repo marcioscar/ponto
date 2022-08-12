@@ -94,11 +94,11 @@ export const getHit = async (userId: string, ponto: string) => {
 };
 
 export const updateHit = async (values: any) => {
-  console.log(new Date(values.entrada));
+  // console.log(new Date(values.entrada));
   // let d = moment.tz("America/Sao_Paulo");
   // console.log(d.format(values.entrada)); //2019-10-18T10:32:31-03:00
-  var a = moment.utc(values.entrada).tz("Europe/Istanbul").format();
-  console.log(a);
+  // var a = moment.utc(values.entrada).tz("Europe/Istanbul").format();
+  // console.log(new Date(a));
   return prisma.user.update({
     where: {
       email: values.email,
@@ -110,7 +110,7 @@ export const updateHit = async (values: any) => {
             day: values.day,
           },
           data: {
-            in: new Date(a),
+            in: new Date(values.entrada),
             outLunch: new Date(values.saidaAlmoco),
             inLunch: new Date(values.entradaAlmoco),
             out: new Date(values.saida),
