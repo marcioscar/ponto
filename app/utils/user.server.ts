@@ -94,10 +94,10 @@ export const getHit = async (userId: string, ponto: string) => {
 };
 
 export const updateHit = async (values: any) => {
-  console.log(values.entrada);
+  
   // console.log(new Date());
-  const data3 = "2022-08-18T08:32:31-03:00";
-  console.log(data3);
+  
+  
   // let d = moment.tz("America/Sao_Paulo");
   // console.log(d.format(values.entrada)); //2019-10-18T10:32:31-03:00
   // var a = moment.utc(values.entrada).tz("Europe/Istanbul").format();
