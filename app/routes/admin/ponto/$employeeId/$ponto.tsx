@@ -27,7 +27,8 @@ export const loader: LoaderFunction = async ({ request, params }) => {
 };
 
 const mutation = makeDomainFunction(schema)(async (values) => {
-  const entrada = new Date(values.data.substring(0, 11) + (values.in) + ":00");
+  const entrada = values.data.substring(0, 11) + values.in + ":00-03:00";
+
   const saidaAlmoco = values.data.substring(0, 11) + values.outLunch + ":00";
   const entradaAlmoco = values.data.substring(0, 11) + values.inLunch + ":00";
   const saida = values.data.substring(0, 11) + values.out + ":00";
