@@ -60,6 +60,7 @@ export const deleteUser = async (user: RegisterForm) => {
 };
 
 export const getOtherUsers = async (userId: string) => {
+    
   return prisma.user.findMany({
     where: {
       id: { not: userId },
